@@ -221,7 +221,7 @@
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-core</artifactId>
         </dependency>
-        
+
         <dependency>
             <groupId>com.github.miemiedev</groupId>
             <artifactId>mybatis-paginator</artifactId>
@@ -270,6 +270,8 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+
+
     </build>
 
 
