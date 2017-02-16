@@ -1,6 +1,5 @@
-package com.yanll.framework.core.service.poi.excel;
+package com.yanll.framework.core.service.importor;
 
-import com.yanll.framework.data.mysql.domain.VOEntity;
 import com.yanll.framework.util.exception.BizException;
 import com.yanll.framework.util.poi.excel.ExcelUtil;
 import org.apache.poi.ss.usermodel.Cell;
@@ -17,19 +16,28 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * consumer端的Excel文件预处理类
+ * Consumer端的Excel文件预处理类
+ * Created by yanll on 2016/12/7.
  *
  * @param <V>
  */
-public class ExcelImportHandler<V extends VOEntity> {
+public class ExcelImportHandler<V> extends ImportHandler<V> {
 
     private static final Logger logger = LoggerFactory.getLogger(ExcelImportHandler.class);
 
-    public List<V> handle(String filename, InputStream is, ExcelImportHandlerCallback excelImportPreConfig) {
+    /**
+     * @param separator             分割符
+     * @param filename              文件名
+     * @param is                    InputStream
+     * @param importHandlerCallback
+     * @return
+     */
+    @Override
+    public List<V> handle(String separator, String filename, InputStream is, ImportHandlerCallback<V> importHandlerCallback) {
         if (filename == null || filename.length() == 0) throw new BizException("文件名为空，导入操作失败！");
         logger.info("开始解析Excel文件：" + filename);
         if (is == null) throw new BizException("文件流为空，导入操作失败！");
-        if (excelImportPreConfig == null) throw new BizException("无预处理参数配置，导入操作失败！");
+        if (importHandlerCallback == null) throw new BizException("无预处理参数配置，导入操作失败！");
         Workbook workBook = null;
         try {
             String file_suffix = ExcelUtil.getExtensionName(filename);
@@ -58,11 +66,11 @@ public class ExcelImportHandler<V extends VOEntity> {
             for (int i = 0; i < cell_count; i++) {
                 Cell cell = row.getCell(i);
                 String value = ExcelUtil.getCellValue(cell);
-                if (value == null)
-                    throw new BizException("Excel解析空数据异常。【行索引：" + (row_index + 1) + "，列索引：" + (i + 1) + "】");
+                if (value == null || value.length() == 0)
+                    logger.warn("Excel解析空数据警告。【行索引：" + (row_index + 1) + "，列索引：" + (i + 1) + "】");
                 tmp[i] = value;
             }
-            V v = (V) excelImportPreConfig.preHandle((row_index + 1), tmp);
+            V v = (V) importHandlerCallback.preHandle((row_index + 1), tmp);
             row_index++;
             preExecution.add(v);
         }
