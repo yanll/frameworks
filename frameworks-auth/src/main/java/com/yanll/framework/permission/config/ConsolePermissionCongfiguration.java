@@ -1,6 +1,6 @@
 package com.yanll.framework.web.permission.config;
 
-import com.yanll.framework.web.permission.filter.permission.PermissionInteceptor;
+import com.yanll.framework.web.permission.filter.permission.ConsolePermissionInteceptor;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.context.annotation.Bean;
@@ -9,18 +9,18 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
-public class PermissionCongfiguration extends WebMvcConfigurerAdapter {
-    private final Log logger = LogFactory.getLog(PermissionCongfiguration.class);
+public class ConsolePermissionCongfiguration extends WebMvcConfigurerAdapter {
+    private final Log logger = LogFactory.getLog(ConsolePermissionCongfiguration.class);
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        logger.info("******Registry session interceptor.*******");
-        registry.addInterceptor(permissionInteceptor())/*.addPathPatterns("*//*")*/;
+        logger.info("******Registry ConsolePermissionInteceptor.*******");
+        registry.addInterceptor(consolePermissionInteceptor())/*.addPathPatterns("*//*")*/;
         super.addInterceptors(registry);
     }
 
     @Bean
-    public PermissionInteceptor permissionInteceptor() {
-        return new PermissionInteceptor();
+    public ConsolePermissionInteceptor consolePermissionInteceptor() {
+        return new ConsolePermissionInteceptor();
     }
 }

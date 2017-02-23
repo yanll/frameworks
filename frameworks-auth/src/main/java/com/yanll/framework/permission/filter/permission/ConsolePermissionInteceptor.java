@@ -3,7 +3,7 @@ package com.yanll.framework.web.permission.filter.permission;
 import com.yanll.framework.util.exception.BizCode;
 import com.yanll.framework.util.exception.BizException;
 import com.yanll.framework.util.jackson.UtilJackson;
-import com.yanll.framework.web.annotation.Permission;
+import com.yanll.framework.web.permission.annotation.ConsolePermission;
 import com.yanll.framework.web.result.JSON;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -21,23 +21,23 @@ import java.util.Map;
 
 /**
  * Created by YANLL on 14-2-23.
- * 权限控制拦截器（基于Springmvc的URL请求有效）
+ * 后台管理系统权限控制拦截器（基于Springmvc的URL请求有效）
  * <p>
  * <p>
- * Permission注解默认不配置（受控）
+ * ConsolePermission注解默认不配置（受控）
  * 权限定义在b_opertion表，控制器定义在IPermissionEnum枚举
  * <p>
  * <p>
  * <p>
  * 拦截规则：
- * 1、若Controller类注解@Permission(controlled = false)，则该控制器下所有请求放行。
- * 2、若Controller方法注解@Permission(controlled = false)，则该方法对应的请求放行。
+ * 1、若Controller类注解@ConsolePermission(controlled = false)，则该控制器下所有请求放行。
+ * 2、若Controller方法注解@ConsolePermission(controlled = false)，则该方法对应的请求放行。
  * 3、除1、2外全部拦截。
  */
 
-public class PermissionInteceptor extends HandlerInterceptorAdapter {
+public class ConsolePermissionInteceptor extends HandlerInterceptorAdapter {
 
-    private final Log logger = LogFactory.getLog(PermissionInteceptor.class);
+    private final Log logger = LogFactory.getLog(ConsolePermissionInteceptor.class);
 
 
     @Override
@@ -53,8 +53,8 @@ public class PermissionInteceptor extends HandlerInterceptorAdapter {
         if (handler_method.getBean() instanceof BasicErrorController) return true;//默认错误页面，放行。
 
         Class<?> class_controller = handler_method.getBeanType();
-        Permission class_permission = class_controller.getAnnotation(Permission.class);
-        Permission method_permission = handler_method.getMethodAnnotation(Permission.class);
+        ConsolePermission class_permission = class_controller.getAnnotation(ConsolePermission.class);
+        ConsolePermission method_permission = handler_method.getMethodAnnotation(ConsolePermission.class);
 
         if (null != class_permission && !class_permission.controlled()) return true;//控制器标注非受控，放行。
         if (null != method_permission && !method_permission.controlled()) return true;//方法标注非受控，放行。
