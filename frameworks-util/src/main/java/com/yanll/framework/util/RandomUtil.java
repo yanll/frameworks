@@ -2,6 +2,13 @@ package com.yanll.framework.util;
 
 import java.util.Random;
 
+/**
+ * Created with IntelliJ IDEA.
+ * User: YANLL
+ * Date: 14-3-29
+ * Time: 上午12:21
+ * To change this template use File | Settings | File Templates.
+ */
 public class RandomUtil {
 
     /**

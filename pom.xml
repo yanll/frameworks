@@ -18,7 +18,6 @@
     <modules>
         <module>frameworks-util</module>
         <module>frameworks-data</module>
-        <module>frameworks-core</module>
         <module>frameworks-web</module>
         <module>frameworks-auth</module>
         <module>maven-plugin-demo</module>

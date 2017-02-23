@@ -1,9 +1,11 @@
 package com.yanll.framework.util;
 
 /**
- * 跟踪工具类
- *
- * @author HongjianZ
+ * Created with IntelliJ IDEA.
+ * User: YANLL
+ * Date: 14-3-29
+ * Time: 上午12:21
+ * To change this template use File | Settings | File Templates.
  */
 public class UTrace {
     static final String PACKAGE_ROOT = "";

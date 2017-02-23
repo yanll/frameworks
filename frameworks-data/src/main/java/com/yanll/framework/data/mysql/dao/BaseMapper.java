@@ -1,7 +1,7 @@
 package com.yanll.framework.data.mysql.dao;
 
 
-import com.yanll.framework.data.mysql.domain.DataEntity;
+import com.yanll.framework.data.domain.DataEntity;
 
 import java.util.List;
 

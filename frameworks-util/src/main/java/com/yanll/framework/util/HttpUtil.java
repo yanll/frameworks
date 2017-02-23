@@ -10,7 +10,7 @@ import java.net.URL;
 
 /**
  * Created with IntelliJ IDEA.
- * User: YAN
+ * User: YANLL
  * Date: 14-3-29
  * Time: 上午12:21
  * To change this template use File | Settings | File Templates.

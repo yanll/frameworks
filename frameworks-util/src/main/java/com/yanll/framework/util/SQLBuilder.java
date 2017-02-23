@@ -5,9 +5,9 @@ import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
- * User: YAN
- * Date: 14-3-15
- * Time: 下午5:57
+ * User: YANLL
+ * Date: 14-3-29
+ * Time: 上午12:21
  * To change this template use File | Settings | File Templates.
  */
 public class SQLBuilder {
