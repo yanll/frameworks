@@ -42,7 +42,7 @@ public class ConsolePermissionInteceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        /*if (true) return true;*/
+        if (true) return true;
         String controller = "";
         String operation = "";
         String method_type = "";

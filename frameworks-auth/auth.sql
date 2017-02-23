@@ -73,4 +73,5 @@ CREATE TABLE `m_user_group_rel` (
 INSERT INTO `m_menu` (`id`, `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES ('1', NULL, NULL, '系统管理', NULL, NULL);
 INSERT INTO `m_menu` (`id`, `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES ('2', '1', '/auth/permission/group/list', '权限管理', NULL, NULL);
 INSERT INTO `m_menu` (`id`, `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES ('3', '1', '/auth/permission/user/list', '用户管理', NULL, NULL);
+INSERT INTO `m_menu` (`id`, `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES ('4', '1', '/auth/permission/menu/list', '菜单管理', NULL, NULL);
 
