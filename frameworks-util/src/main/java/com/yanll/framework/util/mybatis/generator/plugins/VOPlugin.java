@@ -47,7 +47,7 @@ public class VOPlugin extends PluginAdapter {
             newModel.setVisibility(JavaVisibility.PUBLIC);
             //VO默认都增加VoEntity继承
             newModel.setSuperClass("VOEntity");
-            newModel.addImportedType("com.yanll.framework.data.mysql.domain.VOEntity");
+            newModel.addImportedType("com.yanll.framework.data.domain.VOEntity");
             List<Field> fields = original.getFields();
             if (fields != null) {
                 for (Field field : fields) {
