@@ -1,6 +1,8 @@
 package com.yanll.framework.web.result;
 
 
+import com.yanll.framework.util.exception.BizCode;
+
 import java.util.Date;
 
 /**
@@ -25,6 +27,11 @@ public class JSON<T> {
     public JSON(int code, String desc) {
         this.code = code;
         this.desc = desc;
+    }
+
+    public JSON(T data) {
+        this.code = BizCode.OK.getValue();
+        this.data = data;
     }
 
     public JSON(int code, T data) {

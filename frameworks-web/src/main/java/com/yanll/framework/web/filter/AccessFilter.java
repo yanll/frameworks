@@ -14,6 +14,7 @@ public class AccessFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        /*
         try {
 
         } catch (Exception e) {
@@ -22,6 +23,7 @@ public class AccessFilter extends OncePerRequestFilter {
             response.setHeader("Access-Control-Allow-Origin", "*");// 跨域处理
             filterChain.doFilter(request, response);
         }
+        */
     }
 
 

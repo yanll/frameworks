@@ -75,3 +75,4 @@ INSERT INTO `m_menu` (`id`, `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALU
 INSERT INTO `m_menu` (`id`, `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES ('3', '1', '/auth/permission/user/list', '用户管理', NULL, NULL);
 INSERT INTO `m_menu` (`id`, `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES ('4', '1', '/auth/permission/menu/list', '菜单管理', NULL, NULL);
 
+INSERT INTO `m_user` (`id`, `username`, `password`, `nickname`, `enabled`) VALUES ('10001', 'admin', 'admin', 'admin', '1');
