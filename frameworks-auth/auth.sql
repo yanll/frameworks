@@ -76,3 +76,66 @@ INSERT INTO `m_menu` (`id`, `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALU
 INSERT INTO `m_menu` (`id`, `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES ('4', '1', '/auth/permission/menu/list', '菜单管理', NULL, NULL);
 
 INSERT INTO `m_user` (`id`, `username`, `password`, `nickname`, `enabled`) VALUES ('10001', 'admin', 'admin', 'admin', '1');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+INSERT INTO `m_menu` (  `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES ( NULL, NULL, '系统管理1', NULL, NULL);
+INSERT INTO `m_menu` (  `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES (  '1', '/auth/permission/group/list', '权限管理2', NULL, NULL);
+INSERT INTO `m_menu` (  `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES (  '1', '/auth/permission/user/list', '用户管理3', NULL, NULL);
+INSERT INTO `m_menu` (`parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES ( '1', '/auth/permission/menu/list', '菜单管理4', NULL, NULL);
+
+INSERT INTO `m_menu` (  `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES ( NULL, NULL, '系统管理5', NULL, NULL);
+INSERT INTO `m_menu` (  `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES (  '1', '/auth/permission/group/list', '权限管理6', NULL, NULL);
+INSERT INTO `m_menu` (  `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES (  '1', '/auth/permission/user/list', '用户管理7', NULL, NULL);
+INSERT INTO `m_menu` (`parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES ( '1', '/auth/permission/menu/list', '菜单管理8', NULL, NULL);
+
+INSERT INTO `m_menu` (  `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES ( NULL, NULL, '系统管理9', NULL, NULL);
+INSERT INTO `m_menu` (  `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES (  '1', '/auth/permission/group/list', '权限管理10', NULL, NULL);
+INSERT INTO `m_menu` (  `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES (  '1', '/auth/permission/user/list', '用户管理11', NULL, NULL);
+INSERT INTO `m_menu` (`parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES ( '1', '/auth/permission/menu/list', '菜单管理12', NULL, NULL);
+
+INSERT INTO `m_menu` (  `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES ( NULL, NULL, '系统管理13', NULL, NULL);
+INSERT INTO `m_menu` (  `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES (  '1', '/auth/permission/group/list', '权限管理14', NULL, NULL);
+INSERT INTO `m_menu` (  `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES (  '1', '/auth/permission/user/list', '用户管理15', NULL, NULL);
+INSERT INTO `m_menu` (`parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES ( '1', '/auth/permission/menu/list', '菜单管理16', NULL, NULL);
+
+INSERT INTO `m_menu` (  `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES ( NULL, NULL, '系统管理17', NULL, NULL);
+INSERT INTO `m_menu` (  `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES (  '1', '/auth/permission/group/list', '权限管理18', NULL, NULL);
+INSERT INTO `m_menu` (  `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES (  '1', '/auth/permission/user/list', '用户管理19', NULL, NULL);
+INSERT INTO `m_menu` (`parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES ( '1', '/auth/permission/menu/list', '菜单管理20', NULL, NULL);
+
+INSERT INTO `m_menu` (  `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES ( NULL, NULL, '系统管理21', NULL, NULL);
+INSERT INTO `m_menu` (  `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES (  '1', '/auth/permission/group/list', '权限管理22', NULL, NULL);
+INSERT INTO `m_menu` (  `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES (  '1', '/auth/permission/user/list', '用户管理23', NULL, NULL);
+INSERT INTO `m_menu` (`parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES ( '1', '/auth/permission/menu/list', '菜单管理24', NULL, NULL);
+
+INSERT INTO `m_menu` (  `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES ( NULL, NULL, '系统管理25', NULL, NULL);
+INSERT INTO `m_menu` (  `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES (  '1', '/auth/permission/group/list', '权限管理26', NULL, NULL);
+INSERT INTO `m_menu` (  `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES (  '1', '/auth/permission/user/list', '用户管理27', NULL, NULL);
+INSERT INTO `m_menu` (`parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES ( '1', '/auth/permission/menu/list', '菜单管理28', NULL, NULL);
+
+INSERT INTO `m_menu` (  `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES ( NULL, NULL, '系统管理29', NULL, NULL);
+INSERT INTO `m_menu` (  `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES (  '1', '/auth/permission/group/list', '权限管理30', NULL, NULL);
+INSERT INTO `m_menu` (  `parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES (  '1', '/auth/permission/user/list', '用户管理31', NULL, NULL);
+INSERT INTO `m_menu` (`parent_id`, `url`, `menu_name`, `idx`, `icon`) VALUES ( '1', '/auth/permission/menu/list', '菜单管理32', NULL, NULL);
