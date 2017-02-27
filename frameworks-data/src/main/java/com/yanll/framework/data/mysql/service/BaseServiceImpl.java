@@ -1,11 +1,13 @@
 package com.yanll.framework.data.mysql.service;
 
 
-import com.yanll.framework.data.mysql.dao.BaseMapper;
+import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.yanll.framework.data.domain.DataEntity;
 import com.yanll.framework.data.domain.VOEntity;
+import com.yanll.framework.data.mysql.dao.BaseMapper;
 import com.yanll.framework.util.exception.BizCode;
 import com.yanll.framework.util.exception.BizException;
+import com.yanll.framework.util.page.PaginateWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -166,6 +168,20 @@ public abstract class BaseServiceImpl<T extends DataEntity, V extends VOEntity> 
                 logger.error("toVO Exception:", ex);
             }
             rs.add(v);
+        }
+        return rs;
+    }
+
+    public PaginateWrapper<List<V>> toPaginateWrapper(List<T> list) {
+        PaginateWrapper<List<V>> rs = new PaginateWrapper<>();
+        List<V> list_ = new ArrayList<>();
+        for (T t : list) {
+            list_.add(toVO(t));
+        }
+        rs.setItems(list_);
+        if (list instanceof PageList) {
+            PageList<T> pl = (PageList<T>) list;
+            rs.setPaginator(pl.getPaginator());
         }
         return rs;
     }
