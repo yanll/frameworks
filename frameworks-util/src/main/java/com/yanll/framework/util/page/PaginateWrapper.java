@@ -12,16 +12,16 @@ public class PaginateWrapper<T> implements Serializable {
      */
     private static final long serialVersionUID = 2874371941548801172L;
 
-    private Paginator paginator;
+    private Pagination pagination;
 
     private T items;
 
-    public Paginator getPaginator() {
-        return paginator;
+    public Pagination getPagination() {
+        return pagination;
     }
 
-    public void setPaginator(Paginator paginator) {
-        this.paginator = paginator;
+    public void setPagination(Pagination pagination) {
+        this.pagination = pagination;
     }
 
     public T getItems() {

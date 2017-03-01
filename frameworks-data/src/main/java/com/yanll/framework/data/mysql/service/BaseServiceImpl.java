@@ -1,13 +1,16 @@
 package com.yanll.framework.data.mysql.service;
 
 
+import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
+import com.github.miemiedev.mybatis.paginator.domain.Paginator;
 import com.yanll.framework.data.domain.DataEntity;
 import com.yanll.framework.data.domain.VOEntity;
 import com.yanll.framework.data.mysql.dao.BaseMapper;
 import com.yanll.framework.util.exception.BizCode;
 import com.yanll.framework.util.exception.BizException;
 import com.yanll.framework.util.page.PaginateWrapper;
+import com.yanll.framework.util.page.Pagination;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -172,17 +175,28 @@ public abstract class BaseServiceImpl<T extends DataEntity, V extends VOEntity> 
         return rs;
     }
 
-    public PaginateWrapper<List<V>> toPaginateWrapper(List<T> list) {
+    public PaginateWrapper<List<V>> toPaginateWrapper(List<T> list, PageBounds pageBounds) {
         PaginateWrapper<List<V>> rs = new PaginateWrapper<>();
         List<V> list_ = new ArrayList<>();
         for (T t : list) {
             list_.add(toVO(t));
         }
         rs.setItems(list_);
+        Pagination pagination = new Pagination();
         if (list instanceof PageList) {
             PageList<T> pl = (PageList<T>) list;
-            rs.setPaginator(pl.getPaginator());
+            Paginator paginator = pl.getPaginator();
+            if (paginator != null) {
+                pagination.setPage(paginator.getPage());
+                pagination.setLimit(paginator.getLimit());
+                pagination.setTotal(paginator.getTotalCount());
+                pagination.setLimit(paginator.getLimit());
+            }
+        } else {
+            pagination.setPage(pageBounds.getPage());
+            pagination.setLimit(pageBounds.getLimit());
         }
+        rs.setPagination(pagination);
         return rs;
     }
 
