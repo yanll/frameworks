@@ -11,7 +11,7 @@ import java.util.Date;
 public class JSON<T> {
 
 
-    private int code;
+    private Integer code;
     private String desc = "";
     private T data;
     private Date datetime = new Date();
@@ -20,7 +20,7 @@ public class JSON<T> {
 
     }
 
-    public JSON(int code) {
+    public JSON(Integer code) {
         this.code = code;
     }
 
@@ -45,11 +45,11 @@ public class JSON<T> {
         this.data = data;
     }
 
-    public int getCode() {
+    public Integer getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 

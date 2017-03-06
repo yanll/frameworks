@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Administrator on 2016/11/11.
+ * Created by YANLL on 2016/11/11.
  */
 public class EnumUtil {
     private static final Logger logger = LoggerFactory.getLogger(EnumUtil.class);
