@@ -1,9 +1,6 @@
 package com.yanll.framework.util;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,6 +20,9 @@ public class TreeUtil {
     public static final String NULLSTRING = "";
 
     /**
+     * 将数据集合转换为树
+     * <p>
+     * <p>
      * childFieldName、parentFieldName一般为id,parent_id。
      * 用于指定描述父子级关系的字段
      *
@@ -32,6 +32,7 @@ public class TreeUtil {
      * @return
      */
     public static List<Map<String, Object>> buildMapTree(List<Map<String, Object>> src, String childFieldName, String parentFieldName) {
+        if (src == null || src.size() == 0) return new ArrayList<Map<String, Object>>();
         List<Map<String, Object>> parents = new ArrayList<Map<String, Object>>();
         List<Map<String, Object>> children = new ArrayList<Map<String, Object>>();
         for (Map<String, Object> ent : src) {
@@ -49,6 +50,20 @@ public class TreeUtil {
         }
         recurseMapTree(parents, children, childFieldName, parentFieldName);
         return parents;
+    }
+
+
+    /**
+     * 将树（buildMapTree构造）转换为数据集合
+     *
+     * @param nodes
+     * @return
+     */
+    public static List<Map<String, Object>> readMapTree(List<Map<String, Object>> nodes) {
+        List<Map<String, Object>> rs = new ArrayList<Map<String, Object>>();
+        if (nodes == null || nodes.size() == 0) return rs;
+        recurseMapTree(rs, nodes);
+        return rs;
     }
 
     private static void recurseMapTree(List<Map<String, Object>> parents, List<Map<String, Object>> others, String childFieldName, String parentFieldName) {
@@ -81,16 +96,6 @@ public class TreeUtil {
         } else {
             recurseMapTree(record, others, childFieldName, parentFieldName);
         }
-    }
-
-    /**
-     * @param nodes
-     * @return
-     */
-    public static List<Map<String, Object>> readMapTree(List<Map<String, Object>> nodes) {
-        List<Map<String, Object>> rs = new ArrayList<Map<String, Object>>();
-        recurseMapTree(rs, nodes);
-        return rs;
     }
 
     private static void recurseMapTree(List<Map<String, Object>> rs, List<Map<String, Object>> nodes) {

@@ -17,6 +17,7 @@ CREATE TABLE `m_menu` (
   `icon` varchar(64) DEFAULT NULL COMMENT '菜单图标',
   `idx` bigint(20) DEFAULT NULL COMMENT '排序',
   `enabled` int(11) NOT NULL DEFAULT '0' COMMENT '是否启用 1：是 0：否',
+  `editable` int(11) NOT NULL DEFAULT '0' COMMENT '是否可编辑 1：是 0：否',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8 COMMENT='菜单表';
 
