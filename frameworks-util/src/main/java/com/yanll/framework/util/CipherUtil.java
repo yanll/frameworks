@@ -1,5 +1,7 @@
 package com.yanll.framework.util;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import java.security.MessageDigest;
 
 /**
@@ -56,20 +58,29 @@ public class CipherUtil {
 
     private static String byteToHexString(byte b) {
         int n = b;
-        if (n < 0)
-            n = 256 + n;
+        if (n < 0) n = 256 + n;
         int d1 = n / 16;
         int d2 = n % 16;
         return hexDigits[d1] + hexDigits[d2];
     }
 
     public static void main(String[] args) {
+        /*
         String pwd = args[0];
         String encryptPwd = "";
         CipherUtil cipher = new CipherUtil();
         System.out.println("pwd:" + pwd);
         encryptPwd = cipher.encryptPassword(pwd);
         System.out.println("encrypt_pwd:" + encryptPwd);
+        */
+
+        String password = "yanliangliang";
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        System.out.println(encoder.encode(password));
+        System.out.println(encoder.encode(password).length());
+        System.out.println(encoder.matches("yanliangliang", "$2a$10$SYXAjyj1u/eR63aNniXk5uJ40qa8A8mdWYbY9MtOkP.86uSW7Eufq"));
+
+
 
     }
 
