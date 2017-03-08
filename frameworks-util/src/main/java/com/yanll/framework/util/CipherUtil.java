@@ -74,11 +74,11 @@ public class CipherUtil {
         System.out.println("encrypt_pwd:" + encryptPwd);
         */
 
-        String password = "yanliangliang";
+        String password = "lly";
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         System.out.println(encoder.encode(password));
         System.out.println(encoder.encode(password).length());
-        System.out.println(encoder.matches("yanliangliang", "$2a$10$SYXAjyj1u/eR63aNniXk5uJ40qa8A8mdWYbY9MtOkP.86uSW7Eufq"));
+        System.out.println(encoder.matches("lly", "$2a$10$SYXAjyj1u/eR63aNniXk5uJ40qa8A8mdWYbY9MtOkP.86uSW7Eufq"));
 
 
 
