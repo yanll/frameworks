@@ -9,6 +9,7 @@ public class BizException extends RuntimeException {
 
     public BizException(String msg) {
         super(msg);
+        this.code = BizCode.DEFAULT_BIZ_ERROR.getValue();
         this.msg = msg;
     }
 

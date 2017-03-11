@@ -26,7 +26,9 @@ public class GlobalExceptionHandler {
         if (bizException.getMsg() != null && bizException.getMsg().length() != 0) {
             result.setDesc(bizException.getMsg());
         }
-        logger.error("[" + bizException.getCode() + "," + bizException.getMsg() + "]");
+        String mes = "[" + bizException.getCode() + "," + bizException.getMsg() + "]";
+        if (bizException.getCode() != BizCode.DEFAULT_BIZ_ERROR.getValue().intValue()) logger.error(mes, bizException);
+        else logger.error(mes);
         return result;
     }
 
@@ -40,7 +42,7 @@ public class GlobalExceptionHandler {
         if (runtimeException.getMessage() != null && runtimeException.getMessage().length() > 0) {
             runtime_err = runtimeException.getMessage();
         }
-        logger.error(BizCode.INTERNAL_SERVER_ERROR.getDesc() + " >> " + runtime_err, runtimeException);
+        logger.error(runtime_err, runtimeException);
         return result;
     }
 
