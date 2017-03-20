@@ -32,7 +32,8 @@ public class APIExecuteTimeAdvice {
             Method method = signature.getMethod();
             RequestMapping controllerAnnotation = controller.getAnnotation(RequestMapping.class);
             RequestMapping methodAnnotation = method.getAnnotation(RequestMapping.class);
-            description.append(controllerAnnotation.name()).append("#").append(methodAnnotation.name());
+            if (controllerAnnotation != null) description.append(controllerAnnotation.name()).append("#");
+            if (methodAnnotation != null) description.append(methodAnnotation.name());
             description.append(" ").append(controller.getName()).append(".").append(method.getName());
             result = pjp.proceed();
         } catch (Exception e) {
