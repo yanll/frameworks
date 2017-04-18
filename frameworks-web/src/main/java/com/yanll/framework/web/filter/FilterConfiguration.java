@@ -1,6 +1,5 @@
 package com.yanll.framework.web.filter;
 
-import com.h2finance.framework.web.filter.CustomCorsRegistration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -23,12 +22,6 @@ public class FilterConfiguration extends WebMvcConfigurerAdapter {
 
     @Bean
     public FilterRegistrationBean filterRegistrationBean() {
-        logger.info("************FilterRegistrationBean Loading************");
-        CustomCorsRegistration coresRegistration = new CustomCorsRegistration("/**");
-        coresRegistration.allowedHeaders(CrossOrigin.DEFAULT_ALLOWED_HEADERS).allowedMethods(HttpMethod.GET.name(), HttpMethod.POST.name(), HttpMethod.PUT.name(), HttpMethod.DELETE.name()).allowedOrigins("*");
-        UrlBasedCorsConfigurationSource configSource = new UrlBasedCorsConfigurationSource();
-        configSource.registerCorsConfiguration("/**", coresRegistration.getCorsConfiguration());
-        CorsFilter corsFilter = new CorsFilter(configSource);
-        return new FilterRegistrationBean(corsFilter);
+        return null;
     }
 }
