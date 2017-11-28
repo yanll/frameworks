@@ -14,6 +14,7 @@ public class GreetingMojo extends AbstractMojo {
     @Parameter(property = "sayhi.greeting", defaultValue = "Hello World!")
     private String greeting;
 
+    @Override
     public void execute() throws MojoExecutionException {
         getLog().info(greeting);
     }

@@ -13,6 +13,7 @@ import java.util.Map;
 @Repository
 public class Dao extends AbstractDao {
 
+    @Override
     public List<Map<String, Object>> queryForList(String sql, int index, int size, Object... args) {
         return null;
     }

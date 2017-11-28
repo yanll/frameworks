@@ -21,11 +21,11 @@ public class ExcelUtil {
     public static Workbook getWeebWork(InputStream is, String file_suffix) throws IOException {
         Workbook workbook = null;
         if (null != is) {
-            if (file_suffix.toLowerCase().equals("xls")) {
+            if ("xls".equals(file_suffix.toLowerCase())) {
                 workbook = new HSSFWorkbook(is);
             }
-            if (file_suffix.toLowerCase().equals("xlsx")) {
-                workbook = new XSSFWorkbook(is);
+            if ("xlsx".equals(file_suffix.toLowerCase())) {
+                workbook = new HSSFWorkbook(is);
             }
         }
         return workbook;
