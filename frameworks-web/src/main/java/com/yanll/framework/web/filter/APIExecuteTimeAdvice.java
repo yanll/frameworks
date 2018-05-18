@@ -1,6 +1,6 @@
 package com.yanll.framework.web.filter;
 
-import org.apache.commons.lang.time.StopWatch;
+import org.apache.commons.lang3.time.StopWatch;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -32,8 +32,12 @@ public class APIExecuteTimeAdvice {
             Method method = signature.getMethod();
             RequestMapping controllerAnnotation = controller.getAnnotation(RequestMapping.class);
             RequestMapping methodAnnotation = method.getAnnotation(RequestMapping.class);
-            if (controllerAnnotation != null) description.append(controllerAnnotation.name()).append("#");
-            if (methodAnnotation != null) description.append(methodAnnotation.name());
+            if (controllerAnnotation != null) {
+                description.append(controllerAnnotation.name()).append("#");
+            }
+            if (methodAnnotation != null) {
+                description.append(methodAnnotation.name());
+            }
             description.append(" ").append(controller.getName()).append(".").append(method.getName());
             result = pjp.proceed();
         } catch (Exception e) {

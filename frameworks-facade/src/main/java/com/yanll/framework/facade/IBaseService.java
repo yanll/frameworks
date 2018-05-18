@@ -1,10 +1,9 @@
-package com.yanll.framework.data.mysql.service;
+package com.yanll.framework.facade;
 
 
-import com.yanll.framework.util.exception.BizException;
+import com.yanll.framework.facade.exception.BizException;
 
-
-public interface BaseService<V> {
+public interface IBaseService<V> {
 
     V selectByPrimaryKey(Long id) throws BizException;
 

@@ -1,4 +1,4 @@
-package com.yanll.framework.data.domain;
+package com.yanll.framework.facade.domain;
 
 import java.io.Serializable;
 import java.util.Date;

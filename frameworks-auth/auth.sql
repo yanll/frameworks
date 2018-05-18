@@ -1,3 +1,7 @@
+CREATE DATABASE IF NOT EXISTS AUTH_CENTER CHARACTER SET UTF8;
+
+use AUTH_CENTER;
+
 DROP TABLE IF EXISTS `m_menu`;
 DROP TABLE IF EXISTS `m_permission`;
 DROP TABLE IF EXISTS `m_permission_group`;
@@ -86,27 +90,5 @@ INSERT INTO `m_user` (`id`, `username`, `password`, `nickname`, `enabled`) VALUE
 
 INSERT INTO `m_permission_group` (`id`, `portal_id`, `group_name`, `enabled`) VALUES ('10001', '1', 'SU（超级管理员）', '1');
 INSERT INTO `m_permission_group` (`id`, `portal_id`, `group_name`, `enabled`) VALUES ('10002', '1', 'GUEST（访客）', '1');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

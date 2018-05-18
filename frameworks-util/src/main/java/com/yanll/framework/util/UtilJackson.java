@@ -1,4 +1,4 @@
-package com.yanll.framework.util.jackson;
+package com.yanll.framework.util;
 
 
 import com.fasterxml.jackson.core.*;
@@ -22,11 +22,8 @@ import java.util.Map;
 //import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 /**
- * 升级jackson 1.X版本至2.X版本，增加对XML的解析。
  * <p>
- * 默认的Jackson处理类 官方推荐使用缓存的JsonFactory、ObjectMapper
- * Created by
- * YAN on 2015/09/30.
+ * Created by YAN on 2015/09/30.
  */
 public class UtilJackson {
     private static final Logger logger = LoggerFactory.getLogger(UtilJackson.class);

@@ -1,13 +1,13 @@
 package com.yanll.framework.auth.permission.filter.permission;
 
 import com.yanll.framework.auth.permission.annotation.ConsolePermission;
-import com.yanll.framework.util.exception.BizCode;
-import com.yanll.framework.util.exception.BizException;
-import com.yanll.framework.util.jackson.UtilJackson;
-import com.yanll.framework.web.result.JSON;
+import com.yanll.framework.facade.domain.AjaxResult;
+import com.yanll.framework.facade.exception.BizCode;
+import com.yanll.framework.facade.exception.BizException;
+import com.yanll.framework.util.UtilJackson;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.boot.autoconfigure.web.BasicErrorController;
+import org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -42,29 +42,45 @@ public class ConsolePermissionInteceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        if (true) return true;
+        if (true) {
+            return true;
+        }
         String controller = "";
         String operation = "";
         String method_type = "";
-
-        if (handler instanceof DefaultServletHttpRequestHandler) return true;//默认静态资源，放行。
+        // 默认静态资源，放行。
+        if (handler instanceof DefaultServletHttpRequestHandler) {
+            return true;
+        }
 
         HandlerMethod handler_method = (HandlerMethod) handler;
-        if (handler_method.getBean() instanceof BasicErrorController) return true;//默认错误页面，放行。
+        if (handler_method.getBean() instanceof BasicErrorController) {
+            return true;//默认错误页面，放行。
+        }
 
         Class<?> class_controller = handler_method.getBeanType();
         ConsolePermission class_permission = class_controller.getAnnotation(ConsolePermission.class);
         ConsolePermission method_permission = handler_method.getMethodAnnotation(ConsolePermission.class);
 
-        if (null != class_permission && !class_permission.controlled()) return true;//控制器标注非受控，放行。
-        if (null != method_permission && !method_permission.controlled()) return true;//方法标注非受控，放行。
+        if (null != class_permission && !class_permission.controlled()) {
+            return true;//控制器标注非受控，放行。
+        }
+        if (null != method_permission && !method_permission.controlled()) {
+            return true;//方法标注非受控，放行。
+        }
 
         RequestMapping class_request_mapping = class_controller.getAnnotation(RequestMapping.class);
         RequestMapping method_request_mapping = handler_method.getMethodAnnotation(RequestMapping.class);
 
-        if (class_request_mapping.value().length > 0) controller = class_request_mapping.value()[0];
-        if (method_request_mapping.value().length > 0) operation = method_request_mapping.value()[0];
-        if (method_request_mapping.method().length > 0) method_type = method_request_mapping.method()[0].name();
+        if (class_request_mapping.value().length > 0) {
+            controller = class_request_mapping.value()[0];
+        }
+        if (method_request_mapping.value().length > 0) {
+            operation = method_request_mapping.value()[0];
+        }
+        if (method_request_mapping.method().length > 0) {
+            method_type = method_request_mapping.method()[0].name();
+        }
 
         String url = controller + operation + ":" + method_type;
 
@@ -73,7 +89,9 @@ public class ConsolePermissionInteceptor extends HandlerInterceptorAdapter {
             Object p = request.getSession().getAttribute("user_permission");//登录用户的权限信息
             if (p != null) {
                 Map<String, String> login_user_permissions = (Map<String, String>) p;
-                if (login_user_permissions != null && login_user_permissions.get(url) != null) return true;
+                if (login_user_permissions != null && login_user_permissions.get(url) != null) {
+                    return true;
+                }
             }
         }
         throw new BizException(BizCode.PERMISSION_DENIED.getValue(), BizCode.PERMISSION_DENIED.getDesc());
@@ -94,7 +112,7 @@ public class ConsolePermissionInteceptor extends HandlerInterceptorAdapter {
 
     private boolean refuse(HttpServletResponse response, String url) throws Exception {
         logger.info("PERMISSION_DENIED! target=" + url);
-        output(response, UtilJackson.toJSON(new JSON(BizCode.PERMISSION_DENIED.getValue(), BizCode.PERMISSION_DENIED.getDesc())));
+        //output(response, UtilJackson.toAjaxResult(new AjaxResult(BizCode.PERMISSION_DENIED.getValue(), BizCode.PERMISSION_DENIED.getDesc())));
         return false;
     }
 

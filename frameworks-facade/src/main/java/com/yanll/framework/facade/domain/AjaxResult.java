@@ -1,14 +1,14 @@
-package com.yanll.framework.web.result;
+package com.yanll.framework.facade.domain;
 
 
-import com.yanll.framework.util.exception.BizCode;
+import com.yanll.framework.facade.exception.BizCode;
 
 import java.util.Date;
 
 /**
  * Created by YAN on 2015/10/27.
  */
-public class JSON<T> {
+public class AjaxResult<T> {
 
 
     private Integer code;
@@ -16,30 +16,30 @@ public class JSON<T> {
     private T data;
     private Date datetime = new Date();
 
-    public JSON() {
+    public AjaxResult() {
 
     }
 
-    public JSON(Integer code) {
+    public AjaxResult(Integer code) {
         this.code = code;
     }
 
-    public JSON(int code, String desc) {
+    public AjaxResult(int code, String desc) {
         this.code = code;
         this.desc = desc;
     }
 
-    public JSON(T data) {
+    public AjaxResult(T data) {
         this.code = BizCode.OK.getValue();
         this.data = data;
     }
 
-    public JSON(int code, T data) {
+    public AjaxResult(int code, T data) {
         this.code = code;
         this.data = data;
     }
 
-    public JSON(int code, String desc, T data) {
+    public AjaxResult(int code, String desc, T data) {
         this.code = code;
         this.desc = desc;
         this.data = data;

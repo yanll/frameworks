@@ -5,12 +5,13 @@ import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.github.miemiedev.mybatis.paginator.domain.Paginator;
 import com.yanll.framework.data.domain.DataEntity;
-import com.yanll.framework.data.domain.VOEntity;
 import com.yanll.framework.data.mysql.dao.BaseMapper;
-import com.yanll.framework.util.exception.BizCode;
-import com.yanll.framework.util.exception.BizException;
-import com.yanll.framework.util.page.PaginateWrapper;
-import com.yanll.framework.util.page.Pagination;
+import com.yanll.framework.facade.IBaseService;
+import com.yanll.framework.facade.exception.BizCode;
+import com.yanll.framework.facade.exception.BizException;
+import com.yanll.framework.facade.page.PaginateWrapper;
+import com.yanll.framework.facade.page.Pagination;
+import com.yanll.framework.facade.domain.VOEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -19,7 +20,7 @@ import org.springframework.beans.BeansException;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BaseServiceImpl<T extends DataEntity, V extends VOEntity> implements BaseService<V> {
+public abstract class BaseServiceImpl<T extends DataEntity, V extends VOEntity> implements IBaseService<V> {
 
     private Logger logger = LoggerFactory.getLogger(BaseServiceImpl.class);
 

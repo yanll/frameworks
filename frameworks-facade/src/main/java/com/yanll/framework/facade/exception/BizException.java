@@ -1,4 +1,4 @@
-package com.yanll.framework.util.exception;
+package com.yanll.framework.facade.exception;
 
 public class BizException extends RuntimeException {
 
