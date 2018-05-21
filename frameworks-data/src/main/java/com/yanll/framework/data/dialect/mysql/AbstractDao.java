@@ -1,4 +1,4 @@
-package com.yanll.framework.data.mysql.dao;
+package com.yanll.framework.data.dialect.mysql;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;

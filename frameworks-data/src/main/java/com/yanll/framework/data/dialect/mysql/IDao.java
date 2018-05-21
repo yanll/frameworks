@@ -1,4 +1,4 @@
-package com.yanll.framework.data.mysql.dao;
+package com.yanll.framework.data.dialect.mysql;
 
 import java.util.List;
 import java.util.Map;

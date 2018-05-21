@@ -1,11 +1,11 @@
-package com.yanll.framework.data.mysql.dao;
+package com.yanll.framework.data;
 
 
-import com.yanll.framework.data.domain.DataEntity;
+import com.yanll.framework.data.domain.POEntity;
 
 import java.util.List;
 
-public interface BaseMapper<T extends DataEntity> {
+public interface BaseMapper<T extends POEntity> {
 
     T selectByPrimaryKey(Long id);
 

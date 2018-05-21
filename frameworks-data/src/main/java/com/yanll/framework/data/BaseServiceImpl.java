@@ -1,17 +1,16 @@
-package com.yanll.framework.data.mysql.service;
+package com.yanll.framework.data;
 
 
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.github.miemiedev.mybatis.paginator.domain.Paginator;
-import com.yanll.framework.data.domain.DataEntity;
-import com.yanll.framework.data.mysql.dao.BaseMapper;
+import com.yanll.framework.data.domain.POEntity;
 import com.yanll.framework.facade.IBaseService;
+import com.yanll.framework.facade.domain.DTOEntity;
 import com.yanll.framework.facade.exception.BizCode;
 import com.yanll.framework.facade.exception.BizException;
 import com.yanll.framework.facade.page.PaginateWrapper;
 import com.yanll.framework.facade.page.Pagination;
-import com.yanll.framework.facade.domain.VOEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -20,7 +19,7 @@ import org.springframework.beans.BeansException;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BaseServiceImpl<T extends DataEntity, V extends VOEntity> implements IBaseService<V> {
+public abstract class BaseServiceImpl<T extends POEntity, V extends DTOEntity> implements IBaseService<V> {
 
     private Logger logger = LoggerFactory.getLogger(BaseServiceImpl.class);
 
@@ -145,7 +144,7 @@ public abstract class BaseServiceImpl<T extends DataEntity, V extends VOEntity> 
         if (t == null) {
             return null;
         }
-        V v = getVO();
+        V v = getDTO();
         try {
             BeanUtils.copyProperties(t, v);
         } catch (BeansException ex) {
@@ -163,7 +162,7 @@ public abstract class BaseServiceImpl<T extends DataEntity, V extends VOEntity> 
         }
         for (T t : list) {
             if (t == null) continue;
-            V v = getVO();
+            V v = getDTO();
             try {
                 BeanUtils.copyProperties(t, v);
             } catch (BeansException ex) {
@@ -211,7 +210,7 @@ public abstract class BaseServiceImpl<T extends DataEntity, V extends VOEntity> 
         if (e == null) {
             return null;
         }
-        T t = getDataEntity();
+        T t = getPOEntity();
         try {
             BeanUtils.copyProperties(e, t);
         } catch (BeansException ex) {
@@ -229,7 +228,7 @@ public abstract class BaseServiceImpl<T extends DataEntity, V extends VOEntity> 
         }
         for (V v : list) {
             if (v == null) continue;
-            T t = getDataEntity();
+            T t = getPOEntity();
             try {
                 BeanUtils.copyProperties(v, t);
             } catch (BeansException ex) {
@@ -242,9 +241,9 @@ public abstract class BaseServiceImpl<T extends DataEntity, V extends VOEntity> 
         return rs;
     }
 
-    public abstract T getDataEntity();
+    public abstract T getPOEntity();
 
-    public abstract V getVO();
+    public abstract V getDTO();
 
     public abstract BaseMapper<T> getMapper();
 }

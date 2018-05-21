@@ -1,10 +1,11 @@
-package com.yanll.framework.facade.domain;
+package com.yanll.framework.data.domain;
 
 import java.io.Serializable;
 import java.util.Date;
 
 
-public class VOEntity implements Serializable {
+public class POEntity implements Serializable {
+
     /**
      *
      */
