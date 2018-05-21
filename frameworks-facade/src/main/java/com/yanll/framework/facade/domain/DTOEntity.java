@@ -1,6 +1,5 @@
 package com.yanll.framework.facade.domain;
 
-import java.io.File;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -28,23 +27,6 @@ public class DTOEntity implements Serializable {
 
     public void setModifyTime(Date modifyTime) {
         this.modifyTime = modifyTime;
-    }
-
-
-    public static void main(String[] args) {
-        File ds = new File("D:\\workspace\\platforms-ui\\auth-ui\\node_modules\\accepts");
-        //if(true)return;
-
-        File d = new File("D:\\workspace\\platforms-ui\\auth-ui\\node_modules");
-        File[] fs = d.listFiles();
-        for (File f : fs) {
-            if (f.isDirectory()) {
-                //System.out.println(f.getPath());
-            } else {
-                if (f.getName().startsWith(".")) continue;
-                System.out.println("cnpm install " + f.getName());
-            }
-        }
     }
 
 }
