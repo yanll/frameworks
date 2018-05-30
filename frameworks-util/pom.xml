@@ -9,6 +9,7 @@
 
     <properties>
         <starter.version>2.0.0-SNAPSHOT</starter.version>
+        <spring.version>5.0.4.RELEASE</spring.version>
     </properties>
 
     <dependencies>
@@ -28,6 +29,12 @@
             <groupId>com.yanll.starter</groupId>
             <artifactId>starter-jackson</artifactId>
             <version>${starter.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${spring.version}</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
