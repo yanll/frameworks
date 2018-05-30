@@ -17,7 +17,9 @@ CREATE TABLE `m_menu` (
   `portal_id` int(11) DEFAULT NULL COMMENT '系统ID',
   `parent_id` bigint(20) DEFAULT NULL COMMENT '父级菜单ID',
   `url` varchar(64) DEFAULT NULL COMMENT '链接地址',
+  `menu_code` varchar(64) NOT NULL COMMENT '菜单代码',
   `menu_name` varchar(64) NOT NULL COMMENT '菜单名称',
+  `menu_params` varchar(256) DEFAULT NULL COMMENT '菜单参数',
   `icon` varchar(64) DEFAULT NULL COMMENT '菜单图标',
   `idx` bigint(20) DEFAULT NULL COMMENT '排序',
   `enabled` int(11) NOT NULL DEFAULT '0' COMMENT '是否启用 1：是 0：否',
@@ -80,10 +82,32 @@ CREATE TABLE `m_user_group_rel` (
 ) ENGINE=InnoDB AUTO_INCREMENT=10001 DEFAULT CHARSET=utf8 COMMENT='组用户映射表';
 
 
-INSERT INTO `m_menu` (`id`, `parent_id`, `portal_id`, `url`, `menu_name`, `idx`, `icon`, `enabled`) VALUES ('10001', NULL, '1', NULL, '系统管理', NULL, NULL, '1');
-INSERT INTO `m_menu` (`id`, `parent_id`, `portal_id`, `url`, `menu_name`, `idx`, `icon`, `enabled`) VALUES ('10002', '10001', '1', '/auth/permission/group/list', '权限管理', NULL, NULL, '1');
-INSERT INTO `m_menu` (`id`, `parent_id`, `portal_id`, `url`, `menu_name`, `idx`, `icon`, `enabled`) VALUES ('10003', '10001', '1', '/auth/permission/user/list', '用户管理', NULL, NULL, '1');
-INSERT INTO `m_menu` (`id`, `parent_id`, `portal_id`, `url`, `menu_name`, `idx`, `icon`, `enabled`) VALUES ('10004', '10001', '1', '/auth/permission/menu/list', '菜单管理', NULL, NULL, '1');
+
+INSERT INTO `m_menu` (`id`, `parent_id`, `portal_id`, `url`, `menu_code`, `menu_name`, `enabled`) VALUES ('101', NULL, '1', NULL, 'home', '主页', '1');
+INSERT INTO `m_menu` (`id`, `parent_id`, `portal_id`, `url`, `menu_code`, `menu_name`, `enabled`) VALUES ('102', NULL, '1', NULL, 'system_manage', '系统管理', '1');
+INSERT INTO `m_menu` (`id`, `parent_id`, `portal_id`, `url`, `menu_code`, `menu_name`, `enabled`) VALUES ('103', NULL, '1', NULL, 'log_manage', '日志管理', '1');
+INSERT INTO `m_menu` (`id`, `parent_id`, `portal_id`, `url`, `menu_code`, `menu_name`, `enabled`) VALUES ('998', NULL, '1', NULL, 'demo_manage', '演示管理', '1');
+INSERT INTO `m_menu` (`id`, `parent_id`, `portal_id`, `url`, `menu_code`, `menu_name`, `enabled`) VALUES ('999', NULL, '1', NULL, 'unknow_batch', '未知批次', '1');
+
+INSERT INTO `m_menu` (`id`, `parent_id`, `portal_id`, `url`, `menu_code`, `menu_name`, `enabled`) VALUES ('1001', 102, '1', NULL, 'permission_group', '权限分组', '1');
+INSERT INTO `m_menu` (`id`, `parent_id`, `portal_id`, `url`, `menu_code`, `menu_name`, `enabled`) VALUES ('1002', 102, '1', NULL, 'menu_manage', '菜单管理', '1');
+INSERT INTO `m_menu` (`id`, `parent_id`, `portal_id`, `url`, `menu_code`, `menu_name`, `enabled`) VALUES ('1003', 102, '1', NULL, 'user_manage', '用户管理', '1');
+
+INSERT INTO `m_menu` (`id`, `parent_id`, `portal_id`, `url`, `menu_code`, `menu_name`, `enabled`) VALUES ('1004', 103, '1', NULL, 'system_log', '系统日志', '1');
+INSERT INTO `m_menu` (`id`, `parent_id`, `portal_id`, `url`, `menu_code`, `menu_name`, `enabled`) VALUES ('1005', 103, '1', NULL, 'operate_log', '操作日志', '1');
+
+INSERT INTO `m_menu` (`id`, `parent_id`, `portal_id`, `url`, `menu_code`, `menu_name`, `enabled`) VALUES ('1006', 999, '1', NULL, 'remit_center', '打款中心', '1');
+INSERT INTO `m_menu` (`id`, `parent_id`, `portal_id`, `url`, `menu_code`, `menu_name`, `enabled`) VALUES ('1007', 999, '1', NULL, 'bank_channel', '银行通道', '1');
+
+
+INSERT INTO `m_menu` (`id`, `parent_id`, `portal_id`, `url`, `menu_code`, `menu_name`, `enabled`) VALUES ('10001', 1007, '1', NULL, 'BJBANK', '北京银行', '1');
+INSERT INTO `m_menu` (`id`, `parent_id`, `portal_id`, `url`, `menu_code`, `menu_name`, `enabled`) VALUES ('10002', 1007, '1', NULL, 'HFBANK', '恒丰银行', '1');
+
+INSERT INTO `m_menu` (`parent_id`, `portal_id`, `url`, `menu_code`, `menu_name`, `enabled`) VALUES (998, '1', NULL, '', '面包屑', '1');
+
+
+
+
 
 INSERT INTO `m_user` (`id`, `username`, `password`, `nickname`, `enabled`) VALUES ('10001', 'admin', 'admin', 'admin', '1');
 
@@ -92,3 +116,20 @@ INSERT INTO `m_permission_group` (`id`, `portal_id`, `group_name`, `enabled`) VA
 INSERT INTO `m_permission_group` (`id`, `portal_id`, `group_name`, `enabled`) VALUES ('10002', '1', 'GUEST（访客）', '1');
 
 
+insert into m_permission (id, portal_id, menu_id, url, method, permission_name, enabled) values (1, 1,101,'','','',1);
+insert into m_permission (id, portal_id, menu_id, url, method, permission_name, enabled) values (2, 1,102,'','','',1);
+
+insert into m_user_permission_rel(user_id,permission_id)values(10001,1);
+insert into m_user_permission_rel(user_id,permission_id)values(10001,2);
+
+select * from m_permission where id in (
+  select permission_id from m_permission_group_rel where group_id in (
+    select id from m_permission_group where id in (
+      select group_id from m_user_group_rel where user_id = 1
+    )
+  )
+)
+union all
+select * from m_permission where id in(
+  select permission_id from m_user_permission_rel where user_id = 1
+)

@@ -21,9 +21,9 @@ public class Pagination {
     public Pagination() {
     }
 
-    public Pagination(Integer limit, Integer page) {
-        this.limit = limit;
+    public Pagination(Integer page, Integer limit) {
         this.page = page;
+        this.limit = limit;
     }
 
     public Integer getLimit() {
