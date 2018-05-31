@@ -111,54 +111,19 @@ INSERT INTO `m_menu` (`parent_id`, `portal_id`, `url`, `menu_code`, `menu_name`,
 
 INSERT INTO `m_user` (`id`, `username`, `password`, `nickname`, `enabled`) VALUES ('10001', 'admin', 'admin', 'admin', '1');
 INSERT INTO `m_user` (`id`, `username`, `password`, `nickname`, `enabled`) VALUES ('10002', 'user', 'user', 'user', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
-INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('1', '1', '1', '1');
 
 
 INSERT INTO `m_permission_group` (`id`, `portal_id`, `group_name`, `enabled`) VALUES ('10001', '1', 'SU（超级管理员）', '1');
 INSERT INTO `m_permission_group` (`id`, `portal_id`, `group_name`, `enabled`) VALUES ('10002', '1', 'GUEST（访客）', '1');
 
-insert into m_permission (portal_id,menu_id,url,method,permission_name,enabled)
-    select 1,id,'index','','def',1 from m_menu;
+insert into m_permission (portal_id,menu_id,url,method,permission_name,enabled) select 1,id,'list','GET','查询列表',1 from m_menu;
+insert into m_permission (portal_id,menu_id,url,method,permission_name,enabled) select 1,id,'add','GET','增加',1 from m_menu;
+insert into m_permission (portal_id,menu_id,url,method,permission_name,enabled) select 1,id,'edit','GET','修改',1 from m_menu;
+insert into m_permission (portal_id,menu_id,url,method,permission_name,enabled) select 1,id,'delete','GET','删除',1 from m_menu;
+insert into m_permission (portal_id,menu_id,url,method,permission_name,enabled) select 1,id,'detail','GET','查看详情',1 from m_menu;
 
 insert into m_user_permission_rel(user_id,permission_id)
-select 10001,id from m_permission;
+  select 10001,id from m_permission;
 
 select * from m_permission where id in (
   select permission_id from m_permission_group_rel where group_id in (
