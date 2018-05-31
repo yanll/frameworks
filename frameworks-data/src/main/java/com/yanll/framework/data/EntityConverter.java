@@ -33,6 +33,20 @@ public class EntityConverter {
         return v;
     }
 
+    public static <PO extends POEntity, DTO extends DTOEntity> DTO toPO(DTO v, PO t) {
+        if (v == null) {
+            return null;
+        }
+        try {
+            BeanUtils.copyProperties(v, t);
+        } catch (BeansException ex) {
+            logger.error("EntityConverter toPO BeansException:", ex);
+        } catch (Exception ex) {
+            logger.error("EntityConverter toPO Exception:", ex);
+        }
+        return v;
+    }
+
     public static <PO extends POEntity, DTO extends DTOEntity> List<DTO> toDTOList(List<PO> list, Class<DTO> classzz) {
         if (list == null || list.size() == 0) {
             return null;
