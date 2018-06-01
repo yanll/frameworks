@@ -72,12 +72,13 @@ public class EntityConverter {
 
     public static <PO extends POEntity, DTO extends DTOEntity> PaginateWrapper<List<DTO>> toPaginateWrapper(List<PO> list, Class<DTO> classzz, PageBounds pageBounds) {
         PaginateWrapper<List<DTO>> rs = new PaginateWrapper<>();
+        Pagination pagination = new Pagination();
+        rs.setPagination(pagination);
         if (list == null || list.size() == 0) {
             return rs;
         }
         List<DTO> list_ = toDTOList(list, classzz);
         rs.setItems(list_);
-        Pagination pagination = new Pagination();
         if (list instanceof PageList) {
             PageList<PO> pl = (PageList<PO>) list;
             Paginator paginator = pl.getPaginator();
