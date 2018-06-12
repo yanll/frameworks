@@ -117,10 +117,11 @@ insert into m_permission (portal_id,menu_id,url,method,permission_name,enabled) 
 insert into m_permission (portal_id,menu_id,url,method,permission_name,enabled) select 1,id,'delete','GET','删除',1 from m_menu where parent_id is not null;
 insert into m_permission (portal_id,menu_id,url,method,permission_name,enabled) select 1,id,'detail','GET','查看详情',1 from m_menu where parent_id is not null;
 
-insert into m_user_permission_rel(user_id,permission_id) select 10001,id from m_permission;
-insert into m_user_permission_rel(user_id,permission_id) select 10002,id from m_permission limit 10;
 insert into m_permission_group_rel(group_id,permission_id) select 10001,id from m_permission;
-insert into m_permission_group_rel(group_id,permission_id) select 10002,id from m_permission limit 10;
+insert into m_permission_group_rel(group_id,permission_id) select 10002,id from m_permission;
+
+insert into m_user_group_rel(group_id, user_id) values(10001, 10001);
+insert into m_user_group_rel(group_id, user_id) values(10002, 10002);
 
 select * from m_permission where id in (
   select permission_id from m_permission_group_rel where group_id in (
@@ -128,8 +129,4 @@ select * from m_permission where id in (
       select group_id from m_user_group_rel where user_id = 10001
     )
   )
-)
-union all
-select * from m_permission where id in(
-  select permission_id from m_user_permission_rel where user_id = 10001
 )
