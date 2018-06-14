@@ -106,6 +106,7 @@ INSERT INTO `m_menu` (`parent_id`, `portal_id`, `url`, `menu_code`, `menu_name`,
 
 INSERT INTO `m_user` (`id`, `username`, `password`, `nickname`, `enabled`) VALUES ('10001', 'admin', 'admin', 'admin', '1');
 INSERT INTO `m_user` (`id`, `username`, `password`, `nickname`, `enabled`) VALUES ('10002', 'user', 'user', 'user', '1');
+INSERT INTO `m_user` (`username`, `password`, `nickname`, `enabled`) VALUES ('guest', 'guest', 'guest', '1');
 
 
 INSERT INTO `m_permission_group` (`id`, `portal_id`, `group_name`, `enabled`) VALUES ('10001', '1', 'SU（超级管理员）', '1');
