@@ -101,15 +101,15 @@ insert into `m_menu` (`id`, `parent_id`, `system_code`, `url`, `menu_code`, `men
 insert into `m_menu` (`id`, `parent_id`, `system_code`, `url`, `menu_code`, `menu_name`, `enabled`) values ('10003', null, 'auth_console', null, 'log_manage', '日志管理', '1');
 insert into `m_menu` (`id`, `parent_id`, `system_code`, `url`, `menu_code`, `menu_name`, `enabled`) values ('10004', null, 'auth_console', null, 'demo_manage', '演示管理', '1');
 
-insert into `m_menu` (`parent_id`, `system_code`, `url`, `menu_code`, `menu_name`, `enabled`) select `id`, '1', null, 'role_manage', '角色管理', '1' from `m_menu` where `menu_code` = 'system_manage';
-insert into `m_menu` (`parent_id`, `system_code`, `url`, `menu_code`, `menu_name`, `enabled`) select `id`, '1', null, 'permission_manage', '权限管理', '1' from `m_menu` where `menu_code` = 'system_manage';
-insert into `m_menu` (`parent_id`, `system_code`, `url`, `menu_code`, `menu_name`, `enabled`) select `id`, '1', null, 'menu_manage', '菜单管理', '1' from `m_menu` where `menu_code` = 'system_manage';
-insert into `m_menu` (`parent_id`, `system_code`, `url`, `menu_code`, `menu_name`, `enabled`) select `id`, '1', null, 'user_manage', '用户管理', '1' from `m_menu` where `menu_code` = 'system_manage';
+insert into `m_menu` (`parent_id`, `system_code`, `url`, `menu_code`, `menu_name`, `enabled`) select `id`, 'auth_console', null, 'role_manage', '角色管理', '1' from `m_menu` where `menu_code` = 'system_manage';
+insert into `m_menu` (`parent_id`, `system_code`, `url`, `menu_code`, `menu_name`, `enabled`) select `id`, 'auth_console', null, 'permission_manage', '权限管理', '1' from `m_menu` where `menu_code` = 'system_manage';
+insert into `m_menu` (`parent_id`, `system_code`, `url`, `menu_code`, `menu_name`, `enabled`) select `id`, 'auth_console', null, 'menu_manage', '菜单管理', '1' from `m_menu` where `menu_code` = 'system_manage';
+insert into `m_menu` (`parent_id`, `system_code`, `url`, `menu_code`, `menu_name`, `enabled`) select `id`, 'auth_console', null, 'user_manage', '用户管理', '1' from `m_menu` where `menu_code` = 'system_manage';
 
-insert into `m_menu` (`parent_id`, `system_code`, `url`, `menu_code`, `menu_name`, `enabled`) select `id`, '1', null, 'system_log_manage', '系统日志管理', '1' from `m_menu` where `menu_code` = 'log_manage';
-insert into `m_menu` (`parent_id`, `system_code`, `url`, `menu_code`, `menu_name`, `enabled`) select `id`, '1', null, 'operate_log_manage', '操作日志管理', '1' from `m_menu` where `menu_code` = 'log_manage';
+insert into `m_menu` (`parent_id`, `system_code`, `url`, `menu_code`, `menu_name`, `enabled`) select `id`, 'auth_console', null, 'system_log_manage', '系统日志管理', '1' from `m_menu` where `menu_code` = 'log_manage';
+insert into `m_menu` (`parent_id`, `system_code`, `url`, `menu_code`, `menu_name`, `enabled`) select `id`, 'auth_console', null, 'operate_log_manage', '操作日志管理', '1' from `m_menu` where `menu_code` = 'log_manage';
 
-insert into `m_menu` (`parent_id`, `system_code`, `url`, `menu_code`, `menu_name`, `enabled`) select `id`, '1', null, 'demo_breadcrumb', '面包屑', '1' from `m_menu` where `menu_code` = 'demo_manage';
+insert into `m_menu` (`parent_id`, `system_code`, `url`, `menu_code`, `menu_name`, `enabled`) select `id`, 'auth_console', null, 'demo_breadcrumb', '面包屑', '1' from `m_menu` where `menu_code` = 'demo_manage';
 
 
 
@@ -122,14 +122,14 @@ insert into `m_user` (`id`, `username`, `password`, `nickname`, `enabled`) value
 insert into `m_user` (`username`, `password`, `nickname`, `enabled`) values ('guest', 'guest', 'guest', '1');
 
 
-insert into `m_role` (`id`, `system_code`, `role_name`, `enabled`) values ('10001', '1', 'su（超级管理员）', '1');
-insert into `m_role` (`id`, `system_code`, `role_name`, `enabled`) values ('10002', '1', 'guest（访客）', '1');
+insert into `m_role` (`id`, `system_code`, `role_name`, `enabled`) values ('10001', 'auth_console', 'su（超级管理员）', '1');
+insert into `m_role` (`id`, `system_code`, `role_name`, `enabled`) values ('10002', 'auth_console', 'guest（访客）', '1');
 
-insert into m_permission (system_code,menu_id,url,permission_name,enabled) select 1,id,'list','查询列表',1 from m_menu where parent_id is not null;
-insert into m_permission (system_code,menu_id,url,permission_name,enabled) select 1,id,'add','增加',1 from m_menu where parent_id is not null;
-insert into m_permission (system_code,menu_id,url,permission_name,enabled) select 1,id,'edit','修改',1 from m_menu where parent_id is not null;
-insert into m_permission (system_code,menu_id,url,permission_name,enabled) select 1,id,'delete','删除',1 from m_menu where parent_id is not null;
-insert into m_permission (system_code,menu_id,url,permission_name,enabled) select 1,id,'detail','查看详情',1 from m_menu where parent_id is not null;
+insert into m_permission (system_code,menu_id,url,permission_name,enabled) select 'auth_console',id,'list','查询列表',1 from m_menu where parent_id is not null;
+insert into m_permission (system_code,menu_id,url,permission_name,enabled) select 'auth_console',id,'add','增加',1 from m_menu where parent_id is not null;
+insert into m_permission (system_code,menu_id,url,permission_name,enabled) select 'auth_console',id,'edit','修改',1 from m_menu where parent_id is not null;
+insert into m_permission (system_code,menu_id,url,permission_name,enabled) select 'auth_console',id,'delete','删除',1 from m_menu where parent_id is not null;
+insert into m_permission (system_code,menu_id,url,permission_name,enabled) select 'auth_console',id,'detail','查看详情',1 from m_menu where parent_id is not null;
 
 insert into m_role_permission_rel(role_id,permission_id) select 10001,id from m_permission;
 insert into m_role_permission_rel(role_id,permission_id) select 10002,id from m_permission;
