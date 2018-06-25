@@ -15,40 +15,43 @@ import java.util.Map;
 public class EnumUtil {
     private static final Logger logger = LoggerFactory.getLogger(EnumUtil.class);
 
-    public static <T> boolean exists(T value, Class em) {
+    private static final String DEAULT_KEY_FIELD = "getKey";
+    private static final String DEAULT_VALUE_FIELD = "getValue";
+
+    public static <T> boolean exists(T key, Class em) throws RuntimeException {
         try {
-            Method m = em.getMethod("getValue");
+            Method m = em.getMethod(DEAULT_KEY_FIELD);
             Object[] objs = em.getEnumConstants();
             for (Object obj : objs) {
-                if (m.invoke(obj).equals(value)) return true;
+                if (m.invoke(obj).equals(key)) return true;
             }
         } catch (NoSuchMethodException e) {
-            logger.error("NoSuchMethodException.", e);
+            throw new RuntimeException("NoSuchMethodException", e);
         } catch (InvocationTargetException e) {
-            logger.error("InvocationTargetException.", e);
+            throw new RuntimeException("InvocationTargetException", e);
         } catch (Exception e) {
-            logger.error("Exception.", e);
+            throw new RuntimeException("Exception", e);
         }
         return false;
     }
 
-    public static Map<Integer, String> toMap(Class em) {
-        Map<Integer, String> map = new HashMap<>();
+    public static Map<String, String> toMap(Class em) {
+        Map<String, String> map = new HashMap<>();
         try {
-            Method m = em.getMethod("getValue");
-            Method m_ = em.getMethod("getDesc");
+            Method m = em.getMethod(DEAULT_KEY_FIELD);
+            Method m_ = em.getMethod(DEAULT_VALUE_FIELD);
             Object[] objs = em.getEnumConstants();
             for (Object obj : objs) {
-                Integer k = (Integer) m.invoke(obj);
+                String k = (String) m.invoke(obj);
                 String v = (String) m_.invoke(obj);
                 map.put(k, v);
             }
         } catch (NoSuchMethodException e) {
-            logger.error("NoSuchMethodException.", e);
+            throw new RuntimeException("NoSuchMethodException", e);
         } catch (InvocationTargetException e) {
-            logger.error("InvocationTargetException.", e);
+            throw new RuntimeException("InvocationTargetException", e);
         } catch (Exception e) {
-            logger.error("Exception.", e);
+            throw new RuntimeException("Exception", e);
         }
         return map;
     }

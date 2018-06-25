@@ -4,53 +4,52 @@ import java.util.Map;
 
 public interface IEnum {
 
-//    public enum YESNO {
-//        Y(1, "是"), N(0, "否");
-//        private String key;
-//        private String value;
-//        private String desc;
-//
-//        private YESNO(String key, String value) {
-//            this.value = value;
-//            this.desc = desc;
-//        }
-//
-//        public Integer getValue() {
-//            return this.value;
-//        }
-//
-//        public String getDesc() {
-//            return desc;
-//        }
-//
-//    }
-//
-//    public enum SYSTEM_PORTAL {
-//        AUTH_CONSOLE(1, "授权控制台"), MONITOR_CONSOLE(2, "监控控制台");
-//        private Integer value;
-//        private String desc;
-//
-//        private SYSTEM_PORTAL(Integer value, String desc) {
-//            this.value = value;
-//            this.desc = desc;
-//        }
-//
-//        public Integer getValue() {
-//            return this.value;
-//        }
-//
-//        public String getDesc() {
-//            return desc;
-//        }
-//
-//    }
+    public enum YESNO {
+        Y("1", "是"), N("0", "否");
+        private String key;
+        private String value;
 
-//    public static void main(String[] args) {
-//        Map<Integer, String> map = EnumUtil.toMap(YESNO.class);
-//
-//        System.out.println(EnumUtil.exists(0, YESNO.class));
-//
-//    }
+        private YESNO(String key, String value) {
+            this.key = key;
+            this.value = value;
+        }
+
+        public String getKey() {
+            return key;
+        }
+
+        public String getValue() {
+            return this.value;
+        }
+
+    }
+
+    public enum SYSTEM_PORTAL {
+        AUTH_CONSOLE("auth_console", "授权控制台"),
+        MONITOR_CONSOLE("monitor_console", "监控控制台");
+        private String key;
+        private String value;
+
+        private SYSTEM_PORTAL(String key, String value) {
+            this.key = key;
+            this.value = value;
+        }
+
+        public String getKey() {
+            return key;
+        }
+
+        public String getValue() {
+            return this.value;
+        }
+
+    }
+
+    public static void main(String[] args) {
+        Map<String, String> map = EnumUtil.toMap(SYSTEM_PORTAL.class);
+        System.out.println(EnumUtil.exists("0", YESNO.class));
+
+    }
 
 }
 
