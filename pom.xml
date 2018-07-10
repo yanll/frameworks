@@ -13,7 +13,6 @@
         <module>frameworks-facade</module>
         <module>frameworks-util</module>
         <module>frameworks-web</module>
-        <module>frameworks-auth</module>
         <module>frameworks-data</module>
     </modules>
 
