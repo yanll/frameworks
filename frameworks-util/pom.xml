@@ -8,7 +8,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <starter.version>2.0.0-SNAPSHOT</starter.version>
+        <starter.version>2.0.5-SNAPSHOT</starter.version>
         <spring.version>5.0.4.RELEASE</spring.version>
     </properties>
 
