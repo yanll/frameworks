@@ -33,7 +33,7 @@ public class EntityConverter {
         return v;
     }
 
-    public static <PO extends POEntity, DTO extends DTOEntity> DTO toPO(DTO v, PO t) {
+    public static <PO extends POEntity, DTO extends DTOEntity> PO toPO(DTO v, PO t) {
         if (v == null) {
             return null;
         }
@@ -44,7 +44,7 @@ public class EntityConverter {
         } catch (Exception ex) {
             logger.error("EntityConverter toPO Exception:", ex);
         }
-        return v;
+        return t;
     }
 
     public static <PO extends POEntity, DTO extends DTOEntity> List<DTO> toDTOList(List<PO> list, Class<DTO> classzz) {
