@@ -91,6 +91,9 @@ public class TreeUtil {
                 }
             }
         }
+        if (parents.size() == 0) {
+            return;
+        }
         if (others.size() == 0) {
             return;
         } else {
